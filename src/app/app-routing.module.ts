@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./pages/intro/intro.module').then((m) => m.IntroPageModule),
   },
   {
+    path: 'about',
+    loadChildren: () =>
+      import('./pages/about/about.module').then((m) => m.AboutPageModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
