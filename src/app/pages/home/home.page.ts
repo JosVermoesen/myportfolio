@@ -1,29 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  listData = [];
+export class HomePage implements OnInit {
+  constructor(private ss: StorageService, private navCtrl: NavController) {}
 
-  constructor(private dataService: DataService) {
-    this.loadData();
-  }
-
-  async loadData() {
-    this.listData = await this.dataService.getData();
-  }
-
-  async addData() {
-    await this.dataService.addData(`Simon ${Math.floor(Math.random() * 100)}`);
-    this.loadData();
-  }
-
-  async removeItem(index: number) {
-    await this.dataService.removeItem(index);
-    this.listData.splice(index, 1);
+  async ngOnInit() {
+    const introPreviouslyShown = await this.ss.get('introShown');
+    if (!introPreviouslyShown) {
+      this.ss.set('introShown', 'true');
+      this.navCtrl.navigateForward('/intro');
+    }
   }
 }
