@@ -63,10 +63,6 @@ export class AboutPage implements OnInit {
   }
 
   async openGithubPage() {
-    const openCapacitorSite = async () => {
-      await Browser.open({
-        url: 'https://github.com/JosVermoesen/myportfolio',
-      });
-    };
+    await Browser.open({ url: 'https://github.com/JosVermoesen/myportfolio' });
   }
 }

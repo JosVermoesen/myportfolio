@@ -32,13 +32,6 @@ export class HomePage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    // At first time use, show intro page
-    const introPreviouslyShown = await this.ss.get('introShown');
-    if (!introPreviouslyShown) {
-      this.ss.set('introShown', 'true');
-      this.navCtrl.navigateForward('/intro');
-    }
-
     // At first time use, set default settings
     const settingsFirst = await this.ss.get('SHOWCANCELED');
     if (!settingsFirst) {
@@ -54,6 +47,13 @@ export class HomePage implements OnInit {
         this.togglemanualONLY = false;
         this.checkForLive();
       }
+    }
+
+    // At first time use, show intro page
+    const introPreviouslyShown = await this.ss.get('INTROSHOWN');
+    if (!introPreviouslyShown) {
+      this.ss.set('INTROSHOWN', 'TRUE');
+      this.navCtrl.navigateForward('/intro');
     }
 
     // asynchronous - gets translations then completes.
@@ -88,9 +88,8 @@ export class HomePage implements OnInit {
   }
 
   async openWebSite() {
-    const openCapacitorSite = async () => {
-      await Browser.open({ url: 'https://rv.be/' });
-    };
+    await Browser.open({ url: 'https://rv.be/' });
+    ;
   }
 
   async checkForLive() {
