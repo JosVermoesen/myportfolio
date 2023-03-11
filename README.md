@@ -1,5 +1,13 @@
 # Portfolio - Uw verzekeringsdocumenten bij de hand
 
+- npm i @ionic/pwa-elements
+- npm i @capacitor/preferences
+- npm i @capacitor/toast
+- npm i @ngx-translate/core
+- npm i @ngx-translate/http-loader
+- npm i jsqr
+- npm install swiper@8
+
 ## Getting started for users
 
 Web version: [demo](https://mijn.rv.be)
@@ -131,8 +139,9 @@ Before building, set resolveJsonModule to 'true' :
 
 ## Best practices: use lazy loading modules
 
-- Generate modules ex. a hosting module: `ng generate module modules/hosting --route hosting --module app.module`
-- Generate modules ex. a contact module: `ng generate module modules/contact --route contact --module app.module`
+- Generate modules ex. a hosting module: `ionic generate module modules/hosting --route hosting --module app.module`
+- Generate modules ex. a hosting module: `ionic g m pages/users/login --route login --module app.module`
+- Generate modules ex. a contact module: `ionic gate module modules/contact --route contact --module app.module`
 
 ## Good practice: Updating Angular as needed
 
