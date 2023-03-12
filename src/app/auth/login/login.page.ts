@@ -1,14 +1,13 @@
-import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from '../../services/account.service';
-
 import { Toast } from '@capacitor/toast';
 
 @Component({
@@ -96,8 +95,7 @@ export class LoginPage implements OnInit {
     this.loginForm.reset();
   }
 
-  login() {
-    console.log(this.loginForm.value);
+  login() {    
     this.isLoading = true;
 
     this.aService.login(this.loginForm.value).subscribe({
