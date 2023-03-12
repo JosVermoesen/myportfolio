@@ -7,7 +7,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountService } from '../../../services/account.service';
+import { AccountService } from '../../services/account.service';
 
 import { Toast } from '@capacitor/toast';
 
@@ -21,10 +21,6 @@ export class LoginPage implements OnInit {
   loginForm!: FormGroup;
   isLoading = false;
 
-  tsTitle = '';
-  tsUsername = '';
-  tsPassword = '';
-  tsRegister = '';
   tsUsernameMessage = '';
   tsPasswordMessage = '';
   tsPasswordMinMessage = '';
@@ -64,10 +60,6 @@ export class LoginPage implements OnInit {
   async initTranslateMessages() {
     this.ts
       .get([
-        'LOGIN.Title',
-        'LOGIN.Username',
-        'LOGIN.Password',
-        'LOGIN.Register',
         'LOGIN.UsernameMessage',
         'LOGIN.PasswordMessage',
         'LOGIN.PasswordMinMessage',
@@ -76,10 +68,6 @@ export class LoginPage implements OnInit {
         'LOGIN.LoginFailed',
       ])
       .subscribe((translations) => {
-        this.tsTitle = translations['LOGIN.Title'];
-        this.tsUsername = translations['LOGIN.Username'];
-        this.tsPassword = translations['LOGIN.Password'];
-        this.tsRegister = translations['LOGIN.Register'];
         this.tsUsernameMessage = translations['LOGIN.UsernameMessage'];
         this.tsPasswordMessage = translations['LOGIN.PasswordMessage'];
         this.tsPasswordMinMessage = translations['LOGIN.PasswordMinMessage'];

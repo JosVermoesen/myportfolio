@@ -30,11 +30,10 @@ export class AppComponent {
   }
 
   async setCurrentUser() {
-    const aUser = await this.ss.get('USER');
-    if (aUser) {
-      const user: User = JSON.parse(aUser);
-      this.aService.setCurrentUser(user);      
-    }
+    const userString = await this.ss.get('USER');
+    if (!userString) return;
+    const user: User = JSON.parse(userString);
+    this.aService.setCurrentUser(user);
   }
 
   async presentAlertConfirm() {

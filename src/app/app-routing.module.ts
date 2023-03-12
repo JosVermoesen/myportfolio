@@ -10,7 +10,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/users/login/login.module').then((m) => m.LoginPageModule),
+      import('./auth/login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./auth/register/register.module').then(
+        (m) => m.RegisterPageModule
+      ),
   },
   {
     path: 'intro',

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ tsTitle }}</ion-title>
+    <ion-title>{{ 'LOGIN.Title' | translate }}</ion-title>
     <ion-buttons slot="primary">
       <ion-button>
         <ion-spinner *ngIf="isLoading"></ion-spinner>
@@ -35,11 +35,15 @@
           </div> -->
           <ion-list>
             <ion-item>
-              <ion-label position="floating">{{ tsUsername }}</ion-label>
+              <ion-label position="floating"
+                >{{ 'LOGIN.Username' | translate }}</ion-label
+              >
               <ion-input type="text" formControlName="username"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">{{ tsPassword }}</ion-label>
+              <ion-label position="floating"
+                >{{ 'LOGIN.Password' | translate }}</ion-label
+              >
               <ion-input type="password" formControlName="password"></ion-input>
             </ion-item>
           </ion-list>
@@ -54,9 +58,9 @@
             [disabled]="loginForm.invalid"
             expand="block"
           >
-            {{ tsTitle }}
+            {{ 'LOGIN.Title' | translate }}
           </ion-button>
-          <ion-button            
+          <ion-button
             (click)="clear()"
             color="primary"
             fill="clear"
@@ -71,7 +75,7 @@
             fill="clear"
             expand="block"
           >
-            {{ tsRegister }}
+            {{ 'LOGIN.Register' | translate }}
           </ion-button>
         </ion-col>
       </ion-row>
