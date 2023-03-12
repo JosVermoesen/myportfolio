@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Slides</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollY]="false">
+  <swiper [config]="swiperConfig">
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-settings.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-menu.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-aboutPortfolio.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-listInsurers.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-detailInsurer.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img
+          src="assets/images/portfolio/portfolio-loginAfterRegistration.png"
+        />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-dashboard.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-insuranceContracts.png" />
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <img src="assets/images/portfolio/portfolio-message.png" />
+      </div>
+    </ng-template>
+  </swiper>
+</ion-content>
+
+<ion-footer>
+  <ion-button
+    expand="full"
+    color="info"
+    routerLink="/"
+    routerDirection="forward"
+  >
+    {{ 'INTRO.Start' | translate }}
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </ion-button>
+</ion-footer>

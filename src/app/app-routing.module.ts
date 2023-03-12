@@ -20,9 +20,9 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'intro',
+    path: 'slides',
     loadChildren: () =>
-      import('./pages/intro/intro.module').then((m) => m.IntroPageModule),
+      import('./pages/slides/slides.module').then((m) => m.SlidesPageModule),
   },
   {
     path: 'about',

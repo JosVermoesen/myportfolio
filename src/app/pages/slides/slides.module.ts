@@ -1,22 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
-import { IntroPage } from './intro.page';
+import { SlidesPageRoutingModule } from './slides-routing.module';
+import { SlidesPage } from './slides.page';
+import { SwiperModule } from 'swiper/angular';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: IntroPage,
-  },
-];
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -34,9 +28,9 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
+    SlidesPageRoutingModule,
+    SwiperModule,
   ],
-  declarations: [IntroPage],
-  entryComponents: [IntroPage],
+  declarations: [SlidesPage],
 })
-export class IntroPageModule {}
+export class SlidesPageModule {}
