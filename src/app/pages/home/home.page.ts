@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../services/storage.service';
 import { Browser } from '@capacitor/browser';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -22,25 +23,26 @@ export class HomePage implements OnInit {
   tsMessageInvestorProfile = '';
 
   userLoading = false;
-  toggleServerLive = false;
+  toggleServerLive = true;
   togglemanualONLY = false;
 
   constructor(
     private ts: TranslateService,
     private ss: StorageService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public aService: AccountService
   ) {}
 
   async ngOnInit() {
     // At first time use, set default settings
     const settingsFirst = await this.ss.get('SHOWCANCELED');
     if (!settingsFirst) {
-      this.ss.set('SHOWCANCELED', 'FALSE');
-      this.ss.set('MANUALONLY', 'FALSE');
-      this.ss.set('SERVERLIVE', 'TRUE');
+      this.ss.set('SHOWCANCELED', 'false');
+      this.ss.set('MANUALONLY', 'false');
+      this.ss.set('SERVERLIVE', 'true');
     } else {
       const manual = await this.ss.get('MANUALONLY');
-      if (manual === 'TRUE') {
+      if (manual === 'true') {
         this.togglemanualONLY = true;
         this.toggleServerLive = false;
       } else {
@@ -52,7 +54,7 @@ export class HomePage implements OnInit {
     // At first time use, show intro page
     const introPreviouslyShown = await this.ss.get('INTROSHOWN');
     if (!introPreviouslyShown) {
-      this.ss.set('INTROSHOWN', 'TRUE');
+      this.ss.set('INTROSHOWN', 'true');
       this.navCtrl.navigateForward('/intro');
     }
 
@@ -94,7 +96,7 @@ export class HomePage implements OnInit {
 
   async checkForLive() {
     const cfl = await this.ss.get('SERVERLIVE');
-    if (cfl === 'TRUE') {
+    if (cfl === 'true') {
       this.toggleServerLive = true;
     } else {
       /* this.ionicStorage.get('SERVERLIVE').then((vals) => {
@@ -105,6 +107,10 @@ export class HomePage implements OnInit {
       }
     }); */
     }
+  }
+
+  showMemberPage(){
+    
   }
 
   async openSettingsPopover(ev: any) {

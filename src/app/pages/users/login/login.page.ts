@@ -6,8 +6,8 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-// import { AccountService } from '../../../shared/services/account.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AccountService } from '../../../services/account.service';
 
 import { Toast } from '@capacitor/toast';
 
@@ -17,6 +17,7 @@ import { Toast } from '@capacitor/toast';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  returnUrl = '';
   loginForm!: FormGroup;
   isLoading = false;
 
@@ -34,11 +35,15 @@ export class LoginPage implements OnInit {
   validation_messages: any;
 
   constructor(
-    // private aService: AccountService,
+    private aService: AccountService,
     private router: Router,
     private ts: TranslateService,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.returnUrl =
+      this.activatedRoute.snapshot.queryParams['returnUrl'] || '/home';
+  }
 
   ngOnInit() {
     this.initTranslateMessages();
@@ -105,35 +110,31 @@ export class LoginPage implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-    /* this.isLoading = true;
-    this.aService
-      .login({
-        username: this.loginForm.value.username,
-        password: this.loginForm.value.password,
-      })
-      .subscribe(
-        () => {
-          const showSuccess = async () => {
-            await Toast.show({
-              text: this.tsLoginSucces,
-            });
-          };
-          showSuccess();
-          this.isLoading = false;
-        },
-        (error: any) => {
-          const showFailed = async () => {
-            await Toast.show({
-              text: this.tsLoginFailed,
-            });
-          };
-          showFailed();
-          this.isLoading = false;
-        },
-        () => {
-          this.router.navigateByUrl('/user');
-          // console.log('whatever');
-        }
-      ); */
+    this.isLoading = true;
+
+    this.aService.login(this.loginForm.value).subscribe({
+      next: () => {
+        const showSuccess = async () => {
+          await Toast.show({
+            text: this.tsLoginSucces,
+          });
+        };
+        showSuccess();
+        this.isLoading = false;
+        this.router.navigateByUrl(this.returnUrl);
+      },
+      error: (err: any) => {
+        const showFailed = async () => {
+          await Toast.show({
+            text: this.tsLoginFailed,
+          });
+        };
+        showFailed();
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.router.navigateByUrl('/user');
+      },
+    });
   }
 }

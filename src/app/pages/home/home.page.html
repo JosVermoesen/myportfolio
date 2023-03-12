@@ -51,8 +51,7 @@
         </div>
 
         <ion-card-content>
-          <!-- <div *ngIf="(aService.currentUser$ | async) === null"> -->
-          <div>
+          <div *ngIf="(aService.currentUser$ | async) === null">
             <p>{{ tsMessageAboutApp }}</p>
             <div *ngIf="toggleServerLive">
               <ion-button
@@ -71,17 +70,17 @@
             </ion-button>
           </div>
 
-          <!-- <div *ngIf="aService.currentUser$ | async" class="ion-padding">
+          <div *ngIf="aService.currentUser$ | async" class="ion-padding">
             <div *ngIf="toggleServerLive">
               <ion-button
                 (click)="showMemberPage()"
                 color="primary"
                 expand="block"
               >
-                {{ 'HOME.MyProfilePage' | translate }}
+                {{ tsMyProfilePage }}
               </ion-button>
             </div>
-          </div> -->
+          </div>
 
           <!-- <div *ngIf="!toggleServerLive && !togglemanualONLY">
             <ion-button
