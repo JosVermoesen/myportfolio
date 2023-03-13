@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../services/storage.service';
 import { Browser } from '@capacitor/browser';
+import { Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class HomePage implements OnInit {
   togglemanualONLY = false;
 
   constructor(
+    private router: Router,
     private ts: TranslateService,
     private ss: StorageService,
     private navCtrl: NavController,
@@ -110,7 +112,7 @@ export class HomePage implements OnInit {
   }
 
   showMemberPage(){
-    
+    this.router.navigateByUrl('/user');
   }
 
   async openSettingsPopover(ev: any) {
