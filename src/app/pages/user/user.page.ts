@@ -126,18 +126,20 @@ export class UserPage implements OnInit {
     // console.log(this.imgData); */
   }
 
-  loadClientData(clientId: string) {
-    this.isLoading = true;
-    this.router.navigate(['/customers', clientId]);
-    this.isLoading = false;
+  loadClientData() {
+    console.log(this.activeUser.clientNumber);
+
+    /* this.isLoading = true;
+    this.router.navigate(['/customers', this.activeUser.clientNumber]);
+    this.isLoading = false; */
   }
 
   fakeClientNumber(clientId: string) {
     console.log(this.searchClient);
-    if (this.searchClient.length == 6) {
+    /* if (this.searchClient.length == 6) {
       this.isLoading = true;
       this.router.navigate(['/customers', this.searchClient]);
-    }
+    } */
   }
 
   async presentAlertConfirm() {

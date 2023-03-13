@@ -31,6 +31,6 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
   ],
-  declarations: [UserPage],
+  declarations: [UserPage, HasRoleDirective],
 })
 export class UserPageModule {}

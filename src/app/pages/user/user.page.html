@@ -20,27 +20,27 @@
     <ion-row>
       <ion-col size-sm="6" offset-sm="3">
         <div *ngIf="hasClientNumber">
-          <!-- <ion-button
-            (click)="loadClientData(user.clientNumber)"
+          <ion-button
+            (click)="loadClientData()"
             color="primary"
             expand="block"
           >
             {{ 'MEMBER.MyPolicies' | translate }}
-          </ion-button> -->
+          </ion-button>
         </div>
-        <!-- <div *appHasRole="['Admin']">
+        <div *appHasRole="['Admin']">
           <ion-item>
             <ion-label position="floating">Client Number to search</ion-label>
             <ion-input type="text" [(ngModel)]="searchClient"></ion-input>
           </ion-item>
           <ion-button
-            (click)="fakeClientNumber(user.clientNumber)"
+            (click)="fakeClientNumber(searchClient)"
             color="primary"
             expand="block"
           >
             Special
           </ion-button>
-        </div> -->
+        </div>
         <ion-list>
           <ion-item>
             <ion-label>{{ 'MEMBER.KnownAs' | translate }}</ion-label>
